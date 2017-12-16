@@ -63,6 +63,39 @@ public class ReportInfo {
         public List<DisasterType> type;
     }
 
+    public class Source {
+        public String href;
+        public int id;
+        public String name;
+        public String shortname;
+        public String longname;
+        public String homepage;
+
+        public String getHref() {
+            return href;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getShortname() {
+            return shortname;
+        }
+
+        public String getLongname() {
+            return longname;
+        }
+
+        public String getHomepage() {
+            return homepage;
+        }
+    }
+
     public class Country {
         public String href;
         public int id;
@@ -126,6 +159,12 @@ public class ReportInfo {
         public String origin;
         public PrimaryCountry primary_country;
         public List<Country> country;
+        public List<Source> source;
+
+        public List<Source> getSource() {
+            return source;
+        }
+
         public List<Disaster> disaster;
         public String url;
         public Date date;
