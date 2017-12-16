@@ -2,6 +2,7 @@ package com.minosai.reliefweb.Activities;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.constraint.ConstraintLayout;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -16,10 +17,6 @@ import com.minosai.reliefweb.R;
 import com.minosai.reliefweb.api.ApiClient;
 import com.minosai.reliefweb.api.ApiInterface;
 import com.minosai.reliefweb.dataClasses.ReportInfo;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +34,7 @@ public class ReportInfoActivity extends AppCompatActivity {
     private TextView textInfoDate;
     private String reportId;
     private FloatingActionButton fab;
+    private ConstraintLayout layoutInfoSource;
 
     ApiInterface apiInterface;
 
@@ -44,6 +42,9 @@ public class ReportInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_info);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         initializeViews();
         fetchData();
@@ -59,6 +60,13 @@ public class ReportInfoActivity extends AppCompatActivity {
         reportId = intent.getStringExtra(REPORT_ID);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        layoutInfoSource = (ConstraintLayout) findViewById(R.id.layout_info_source);
+
+        implementMethods();
+    }
+
+    private void implementMethods() {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +74,15 @@ public class ReportInfoActivity extends AppCompatActivity {
                     openUrl(reportInfo.getData().get(0).getFields().getOrigin());
             }
         });
+
+        layoutInfoSource.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(reportInfo != null)
+                    openUrl(reportInfo.getData().get(0).getFields().getSource().get(0).getHomepage());
+            }
+        });
+
     }
 
     private void fetchData() {
@@ -92,7 +109,7 @@ public class ReportInfoActivity extends AppCompatActivity {
     private void populateData() {
         if(reportInfo != null) {
             textInfoTitle.setText(reportInfo.getData().get(0).getFields().getTitle());
-            textInfoBody.setText(reportInfo.getData().get(0).getFields().getBody());
+            textInfoBody.setText(reportInfo.getData().get(0).getFields().getBody().replace("*",""));
             textInfoSource.setText(reportInfo.getData().get(0).getFields().getSource().get(0).getShortname());
             textInfoDate.setText(reportInfo.getData().get(0).getFields().getDate().getOriginal().substring(0, 10));
         }
@@ -100,6 +117,7 @@ public class ReportInfoActivity extends AppCompatActivity {
 
     public void openUrl(String url){
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        builder.setToolbarColor(getResources().getColor(R.color.colorPrimary));
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(this, Uri.parse(url));
     }
@@ -119,5 +137,11 @@ public class ReportInfoActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

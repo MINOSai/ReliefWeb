@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ReliefWeb</string>
+    <string name="title">Title</string>
+    <string name="the_body_of_info_goes_here">The body of info goes here</string>
+    <string name="report_from">REPORT from</string>
+    <string name="source">source</string>
+    <string name="date">date</string>
+    <string name="todo">TODO</string>
 </resources>

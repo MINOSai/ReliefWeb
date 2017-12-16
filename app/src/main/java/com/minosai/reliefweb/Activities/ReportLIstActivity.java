@@ -108,7 +108,8 @@ public class ReportLIstActivity extends AppCompatActivity {
                                     .setProviders(
                                             AuthUI.EMAIL_PROVIDER,
                                             AuthUI.GOOGLE_PROVIDER)
-                                    .build(),
+                            .setTheme(R.style.LoginTheme)
+                            .build(),
                             RC_SIGN_IN
                     );
                 }

@@ -17,6 +17,6 @@ public interface ApiInterface {
     @GET("reports?appname=apidoc&limit=10")
     public Call<ReportList> getReportList();
 
-    @POST("reports/{reportId}")
+    @GET("reports/{reportId}")
     public Call<ReportInfo> getReportInfo(@Path("reportId") String reportid);
 }
