@@ -5,6 +5,7 @@ import com.minosai.reliefweb.dataClasses.ReportInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -14,8 +15,8 @@ import retrofit2.http.Path;
 public interface ApiInterface {
 
     @GET("reports?appname=apidoc&limit=10")
-    Call<ReportList> getReportList();
+    public Call<ReportList> getReportList();
 
-    @GET("reports/{reportId}")
-    Call<ReportInfo> gerReportInfo(@Path("reportId") String reportid);
+    @POST("reports/{reportId}")
+    public Call<ReportInfo> getReportInfo(@Path("reportId") String reportid);
 }

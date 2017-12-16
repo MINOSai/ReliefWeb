@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ReportList {
 
-    public class Field {
+    public static class Field {
         public String title;
 
         public String getTitle() {
@@ -16,7 +16,7 @@ public class ReportList {
         }
     }
 
-    public class Data{
+    public static class Data{
         public String id;
         public int score;
         public String href;

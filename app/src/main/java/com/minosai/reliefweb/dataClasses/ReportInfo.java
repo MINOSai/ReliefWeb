@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ReportInfo {
 
-    public class date {
+    public class Date {
         public String original;
         public String changed;
         public String created;
@@ -27,11 +27,11 @@ public class ReportInfo {
     }
 
     public class DisasterType {
-        public String id;
+        public int id;
         public String name;
         public String code;
 
-        public String getId() {
+        public int getId() {
             return id;
         }
 
@@ -120,13 +120,19 @@ public class ReportInfo {
     public class Fields {
         public int id;
         public String title;
-        public String published;
+        public String status;
         public String body;
         public List<File> file;
         public String origin;
         public PrimaryCountry primary_country;
         public List<Country> country;
         public List<Disaster> disaster;
+        public String url;
+        public Date date;
+
+        public Date getDate() {
+            return date;
+        }
 
         public int getId() {
             return id;
@@ -136,8 +142,8 @@ public class ReportInfo {
             return title;
         }
 
-        public String getPublished() {
-            return published;
+        public String getStatus() {
+            return status;
         }
 
         public String getBody() {
@@ -168,21 +174,24 @@ public class ReportInfo {
             return url;
         }
 
-        public String url;
     }
 
-    class Data {
-        String id;
-        List<Fields> fields;
+    public class Data {
+
+        public Fields fields;
+        public String id;
 
         public String getId() {
             return id;
         }
 
-        public List<Fields> getFields() {
+        public Fields getFields() {
             return fields;
         }
     }
+
+    public String href;
+    public List<Data> data;
 
     public String getHref() {
         return href;
@@ -191,7 +200,4 @@ public class ReportInfo {
     public List<Data> getData() {
         return data;
     }
-
-    String href;
-    List<Data> data;
 }
