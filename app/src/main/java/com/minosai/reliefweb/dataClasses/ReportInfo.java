@@ -8,58 +8,188 @@ import java.util.List;
 
 public class ReportInfo {
 
-    class date {
-        String original;
-        String changed;
-        String created;
+    public class date {
+        public String original;
+        public String changed;
+        public String created;
+
+        public String getOriginal() {
+            return original;
+        }
+
+        public String getChanged() {
+            return changed;
+        }
+
+        public String getCreated() {
+            return created;
+        }
     }
 
-    class DisasterType {
-        String id;
-        String name;
-        String code;
+    public class DisasterType {
+        public String id;
+        public String name;
+        public String code;
+
+        public String getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getCode() {
+            return code;
+        }
     }
 
-    class Disaster {
-        String id;
-        String name;
-        List<DisasterType> type;
+    public class Disaster {
+        public String id;
+        public String name;
+
+        public String getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public List<DisasterType> getType() {
+            return type;
+        }
+
+        public List<DisasterType> type;
     }
 
-    class Country {
-        String href;
-        int id;
-        String name;
+    public class Country {
+        public String href;
+        public int id;
+        public String name;
+
+        public String getHref() {
+            return href;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 
-    class PrimaryCountry {
-        String href;
-        String name;
+    public class PrimaryCountry {
+        public String href;
+        public String name;
+
+        public String getHref() {
+            return href;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 
-    class File {
-        String id;
-        String description;
-        String url;
-        String filename;
+    public class File {
+        public String id;
+        public String description;
+        public String url;
+        public String filename;
+
+        public String getId() {
+            return id;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public String getFilename() {
+            return filename;
+        }
     }
 
-    class Fields {
-        int id;
-        String title;
-        String published;
-        String body;
-        List<File> file;
-        String origin;
-        PrimaryCountry primary_country;
-        List<Country> country;
-        List<Disaster> disaster;
-        String url;
+    public class Fields {
+        public int id;
+        public String title;
+        public String published;
+        public String body;
+        public List<File> file;
+        public String origin;
+        public PrimaryCountry primary_country;
+        public List<Country> country;
+        public List<Disaster> disaster;
+
+        public int getId() {
+            return id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getPublished() {
+            return published;
+        }
+
+        public String getBody() {
+            return body;
+        }
+
+        public List<File> getFile() {
+            return file;
+        }
+
+        public String getOrigin() {
+            return origin;
+        }
+
+        public PrimaryCountry getPrimary_country() {
+            return primary_country;
+        }
+
+        public List<Country> getCountry() {
+            return country;
+        }
+
+        public List<Disaster> getDisaster() {
+            return disaster;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public String url;
     }
 
     class Data {
         String id;
         List<Fields> fields;
+
+        public String getId() {
+            return id;
+        }
+
+        public List<Fields> getFields() {
+            return fields;
+        }
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public List<Data> getData() {
+        return data;
     }
 
     String href;
