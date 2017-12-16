@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "757087568386",
+    "firebase_url": "https://reliefweb-5e2fa.firebaseio.com",
+    "project_id": "reliefweb-5e2fa",
+    "storage_bucket": "reliefweb-5e2fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757087568386:android:e5426036d528cd58",
+        "android_client_info": {
+          "package_name": "com.minosai.reliefweb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757087568386-9oqm46n931geggrnpje7036gqsssbu1q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.minosai.reliefweb",
+            "certificate_hash": "15f1b15ff32abfbde058df2505a3e0f278205a6e"
+          }
+        },
+        {
+          "client_id": "757087568386-48fffm9hbt83k4ettd3q4fmbnj5i4js7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0UAnXrlM7v_8ZlpacBF_wwMTdGuqJLrg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "757087568386-48fffm9hbt83k4ettd3q4fmbnj5i4js7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

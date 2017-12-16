@@ -74,12 +74,6 @@ public class ReportLIstActivity extends AppCompatActivity {
         recyclerReportList.setLayoutManager(layoutManager);
 
         refreshReportList = (SwipeRefreshLayout) findViewById(R.id.refresh_report);
-        refreshReportList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                fetchReportList();
-            }
-        });
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -91,7 +85,7 @@ public class ReportLIstActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(ReportLIstActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Intent intent = new Intent(ReportLIstActivity.this, ReportInfoActivity.class);
-                        intent.putExtra(ReportInfoActivity.REPORT_ID, reportList.data.get(position).getId());
+                        intent.putExtra(ReportInfoActivity.REPORT_ID, data.get(position).getId());
                         startActivity(intent);
                     }
                 })
@@ -121,9 +115,18 @@ public class ReportLIstActivity extends AppCompatActivity {
 
             }
         };
+
+        refreshReportList.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchReportList();
+            }
+        });
     }
 
     public void fetchReportList() {
+        refreshReportList.setRefreshing(true);
+
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         Call<ReportList> call = apiInterface.getReportList();
         call.enqueue(new Callback<ReportList>() {
@@ -131,13 +134,8 @@ public class ReportLIstActivity extends AppCompatActivity {
             public void onResponse(Call<ReportList> call, Response<ReportList> response) {
 
                 if(response.isSuccessful()) {
-                    refreshReportList.setRefreshing(true);
                     reportList = response.body();
-//                    data = reportList.getData();
-//                    recyclerAdaptor = new RecyclerAdaptor(data);
-//                    recyclerReportList.setAdapter(recyclerAdaptor);
-                    databaseReference.push().setValue(reportList);
-                    refreshReportList.setRefreshing(false);
+                    databaseReference.child("response").setValue(reportList);
                 } else {
                     Toast.makeText(ReportLIstActivity.this, "Error occurred", Toast.LENGTH_SHORT).show();
                 }
@@ -150,6 +148,10 @@ public class ReportLIstActivity extends AppCompatActivity {
                 refreshReportList.setRefreshing(false);
             }
         });
+
+        if(refreshReportList.isRefreshing()) {
+            refreshReportList.setRefreshing(false);
+        }
     }
 
     @Override
@@ -203,6 +205,12 @@ public class ReportLIstActivity extends AppCompatActivity {
 
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    ReportList reportListFirebase = dataSnapshot.getValue(ReportList.class);
+                    data = reportListFirebase.getData();
+                    recyclerAdaptor = new RecyclerAdaptor(data);
+                    recyclerReportList.setAdapter(recyclerAdaptor);
+
                 }
 
                 @Override
