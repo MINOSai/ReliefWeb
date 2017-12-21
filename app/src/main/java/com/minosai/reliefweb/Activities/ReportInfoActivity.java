@@ -26,7 +26,7 @@ public class ReportInfoActivity extends AppCompatActivity {
 
     public static final String REPORT_ID = "com.minosai.reliefweb.Activities.REPORT_ID";
 
-    private ReportInfo reportInfo = null;
+    private ReportInfo reportInfo;
 
     private TextView textInfoTitle;
     private TextView textInfoBody;

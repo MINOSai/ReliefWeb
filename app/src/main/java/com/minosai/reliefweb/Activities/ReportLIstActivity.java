@@ -1,23 +1,18 @@
 package com.minosai.reliefweb.Activities;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -28,8 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.minosai.reliefweb.R;
 import com.minosai.reliefweb.api.ApiClient;
 import com.minosai.reliefweb.api.ApiInterface;
-import com.minosai.reliefweb.recyclerview.RecyclerAdaptor;
 import com.minosai.reliefweb.dataClasses.ReportList;
+import com.minosai.reliefweb.recyclerview.RecyclerAdaptor;
 import com.minosai.reliefweb.recyclerview.RecyclerItemClickListener;
 
 import java.util.List;

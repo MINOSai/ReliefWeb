@@ -1,11 +1,10 @@
 package com.minosai.reliefweb.api;
 
-import com.minosai.reliefweb.dataClasses.ReportList;
 import com.minosai.reliefweb.dataClasses.ReportInfo;
+import com.minosai.reliefweb.dataClasses.ReportList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
